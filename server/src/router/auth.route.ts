@@ -19,4 +19,12 @@ export default (router: express.Router) => {
       res.send(200);
     });
   });
+  router.get("/auth/google", passport.authenticate("google"));
+  router.get(
+    "/auth/google/redirect",
+    passport.authenticate("google"),
+    (req: express.Request, res: express.Response) => {
+      res.sendStatus(200);
+    }
+  );
 };
