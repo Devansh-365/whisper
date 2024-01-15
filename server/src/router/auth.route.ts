@@ -12,11 +12,11 @@ export default (router: express.Router) => {
   router.get("/auth/status", (req: express.Request, res: express.Response) => {
     req.user ? res.send(req.user) : res.sendStatus(401);
   });
-  router.post("/auth/logout", (req: express.Request, res: express.Response) => {
+  router.get("/auth/logout", (req: express.Request, res: express.Response) => {
     if (!req.user) return res.sendStatus(401);
     req.logout((err) => {
       if (err) return res.sendStatus(400);
-      res.send(200);
+      res.sendStatus(200);
     });
   });
   router.get("/auth/google", passport.authenticate("google"));
