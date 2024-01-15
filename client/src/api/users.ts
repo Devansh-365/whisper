@@ -14,8 +14,21 @@ export const register = async (user: any) => {
 
 export const login = async (user: any) => {
   try {
-    const res = await axios.post(`${BASE_URL}/api/auth`, user);
+    const res = await axios.post(`${BASE_URL}/api/auth`, user, {
+      withCredentials: true,
+    });
     console.log("DATA: ", res.data);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const logout = async () => {
+  try {
+    const res = await axios.get(`${BASE_URL}/api/auth/logout`, {
+      withCredentials: true,
+    });
     return res.data;
   } catch (err) {
     console.log(err);
@@ -24,8 +37,10 @@ export const login = async (user: any) => {
 
 export const authStatus = async () => {
   try {
-    const res = await axios.get(`${BASE_URL}/api/auth/status`);
-    console.log("DATA: ", res.data);
+    const res = await axios.get(`${BASE_URL}/api/auth/status`, {
+      withCredentials: true,
+    });
+    console.log("DATAS: ", res);
     return res.data;
   } catch (err) {
     console.log(err);
