@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Posts from "./components/posts";
-import Modal from "./components/modal";
-import { Input } from "./components/input";
-import { FaGoogle } from "react-icons/fa";
 import Footer from "./components/footer";
+import RegisterModal from "./components/modals/register-modal";
+import LoginModal from "./components/modals/login-modal";
 
 function App() {
   const [loginOpen, setLoginOpen] = useState(false);
@@ -26,7 +24,7 @@ function App() {
             className="bg-blue-500 text-white px-3 py-2 rounded-md"
             onClick={() => setLoginOpen(true)}
           >
-            Sign Up
+            Login
           </button>
           <p className="text-gray-600 text-sm font-grotesk ">OR</p>
           <button
@@ -36,76 +34,8 @@ function App() {
             Register
           </button>
         </div>
-        <Modal open={loginOpen} onClose={() => setLoginOpen(false)}>
-          <div className="text-center w-80">
-            {/* <Trash size={56} className="mx-auto text-red-500" /> */}
-            <div className="mx-auto my-4 w-48">
-              <h3 className="text-2xl font-grotesk font-black text-[#0a2b34]">
-                Login
-              </h3>
-            </div>
-            <div className="flex flex-col gap-3">
-              {/* <Input label="Username" placeholder="Devansh" /> */}
-              <Input
-                label="Email"
-                placeholder="devansh@email.com"
-                type="email"
-              />
-              <Input label="Password" placeholder="*********" type="password" />
-            </div>
-            <div className="flex flex-col gap-3 mt-4">
-              <button
-                className="px-3 py-2 rounded-md bg-blue-500 text-white w-full"
-                onClick={() => setLoginOpen(false)}
-              >
-                Login
-              </button>
-              <p className="text-gray-600 text-sm font-grotesk ">OR</p>
-              <button
-                className="flex items-center justify-center px-3 py-2 rounded-md bg-blue-500 text-white w-full"
-                onClick={() => setLoginOpen(false)}
-              >
-                <FaGoogle className="mr-2" />
-                Login with Google
-              </button>
-            </div>
-          </div>
-        </Modal>
-        <Modal open={registerOpen} onClose={() => setRegisterOpen(false)}>
-          <div className="text-center w-80">
-            {/* <Trash size={56} className="mx-auto text-red-500" /> */}
-            <div className="mx-auto my-4 w-48">
-              <h3 className="text-2xl font-grotesk font-black text-[#0a2b34]">
-                Register
-              </h3>
-            </div>
-            <div className="flex flex-col gap-3">
-              <Input label="Username" placeholder="Devansh" />
-              <Input
-                label="Email"
-                placeholder="devansh@email.com"
-                type="email"
-              />
-              <Input label="Password" placeholder="*********" type="password" />
-            </div>
-            <div className="flex flex-col gap-3 mt-4">
-              <button
-                className="px-3 py-2 rounded-md bg-blue-500 text-white w-full"
-                onClick={() => setRegisterOpen(false)}
-              >
-                Register
-              </button>
-              <p className="text-gray-600 text-sm font-grotesk ">OR</p>
-              <button
-                className="flex items-center justify-center px-3 py-2 rounded-md bg-blue-500 text-white w-full"
-                onClick={() => setRegisterOpen(false)}
-              >
-                <FaGoogle className="mr-2" />
-                Register with Google
-              </button>
-            </div>
-          </div>
-        </Modal>
+        <LoginModal open={loginOpen} setOpen={setLoginOpen} />
+        <RegisterModal open={registerOpen} setOpen={setRegisterOpen} />
       </header>
       <main className="scrollbar mt-4 w-full flex-1 overflow-y-scroll scroll-smooth">
         <Posts />
