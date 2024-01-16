@@ -17,7 +17,7 @@ const PostSchema = new mongoose.Schema(
 export const PostModel = mongoose.model("Post", PostSchema);
 
 // Post Actions
-export const getPosts = () => PostModel.find();
+export const getPosts = () => PostModel.find().sort({ createdAt: -1 });
 export const getPostById = (id: string) => PostModel.findById(id);
 export const createPost = (values: Record<string, any>) =>
   new PostModel(values).save().then((post) => post.toObject());

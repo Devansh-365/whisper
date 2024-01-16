@@ -25,11 +25,13 @@ export const createdPost = async (
 ) => {
   try {
     const { content } = req.body;
+    const user: any = req.user;
     if (!content) {
       return res.sendStatus(400);
     }
     const post = await createPost({
       content,
+      user: user._id,
     });
     return res.status(200).json(post).end();
   } catch (error) {

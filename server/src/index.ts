@@ -13,6 +13,7 @@ import mongoose from "mongoose";
 import router from "./router";
 import connect from "./utils/connect";
 import "./stragies/local.strategy";
+// import "./stragies/google.strategy";
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use(
     secret: "AFF_BACKEND",
     resave: false,
     saveUninitialized: false,
+    cookie: { secure: false, httpOnly: false, maxAge: 60000 * 60 },
     // store: sessionStore,
     // cookie: {
     //   maxAge: 60000 * 60,
