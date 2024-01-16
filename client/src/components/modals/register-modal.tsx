@@ -20,7 +20,6 @@ export default function RegisterModal({
   const onSubmit = async (event: any) => {
     event.preventDefault();
     const data = await register(form);
-    console.log("FORM DATA : ", data);
     if (data.email) {
       setOpen(false);
       setForm({
@@ -28,6 +27,7 @@ export default function RegisterModal({
         email: "",
         password: "",
       });
+      window.location.reload();
     }
   };
 

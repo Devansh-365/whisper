@@ -25,6 +25,7 @@ export default function LoginModal({
         username: "",
         password: "",
       });
+      window.location.reload();
     }
   };
 
