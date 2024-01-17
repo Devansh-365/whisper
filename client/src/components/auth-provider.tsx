@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const checkAuth = async () => {
       const checkAuthStatus = await authStatus();
       setIsAuthenticated(
-        checkAuthStatus === "OK" && Cookies.get("connect.sid") != undefined
+        checkAuthStatus === "OK" && Cookies.get("connect.sid") !== undefined
       );
     };
     checkAuth();
