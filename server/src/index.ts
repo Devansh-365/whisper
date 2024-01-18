@@ -35,7 +35,14 @@ app.use(
     secret: "AFF_BACKEND",
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false, httpOnly: false, maxAge: 60000 * 60 },
+    cookie: {
+      secure:
+        !process.env.NODE_ENV || process.env.NODE_ENV === "development"
+          ? true
+          : false,
+      httpOnly: false,
+      maxAge: 60000 * 60,
+    },
     // store: sessionStore,
     // cookie: {
     //   maxAge: 60000 * 60,
